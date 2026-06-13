@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WaterWise — Terra2Vita</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+<nav class="navbar solid">
+  <a href="index.html" class="nav-logo">
+  <!-- ★ Replace logo.png with your actual logo file ★ -->
+  <img src="images/water-logo-back.png" alt="Terra2Vita Logo" class="nav-logo-img">
+  <span>Terra2Vita</span>
+</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li>
+    <li class="nav-dropdown"><a href="programs.html">Programs ▾</a>
+      <div class="dropdown-menu"><a href="waterwise.html">WaterWise</a><a href="littlebuilders.html">Little Builders</a><a href="rise2research.html">Rise2Research</a></div>
+    </li>
+    <li><a href="blog.html">Blog</a></li><li><a href="getinvolved.html">Get Involved</a></li><li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="hamburger"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-menu">
+  <a href="index.html">Home</a><a href="about.html">About</a><a href="programs.html">Programs</a>
+  <a href="waterwise.html" style="padding-left:1rem;font-size:0.875rem;opacity:0.7">— WaterWise</a>
+  <a href="littlebuilders.html" style="padding-left:1rem;font-size:0.875rem;opacity:0.7">— Little Builders</a>
+  <a href="rise2research.html" style="padding-left:1rem;font-size:0.875rem;opacity:0.7">— Rise2Research</a>
+  <a href="blog.html">Blog</a><a href="getinvolved.html">Get Involved</a><a href="contact.html">Contact</a>
+</div>
+
+<div class="page-hero"
+
+     style="
+       background:
+         linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+         url('images/Sunset.jpg');
+       background-size: cover;
+       background-position: center;
+       background-repeat: no-repeat;
+     ">
+  <div class="eyebrow">Program · Technology</div>
+  <h1>WaterWise</h1>
+  <p>AI-powered irrigation recommendations built on physics-informed neural networks, designed for diverse agricultural contexts worldwide.</p>
+</div>
+
+<!-- WHAT IT IS -->
+<section class="section">
+  <div class="two-col reveal">
+    <div>
+      <div class="eyebrow">What It Is</div>
+      <h2>Precision irrigation, powered by AI</h2>
+      <p style="margin-top:1.25rem;">WaterWise is an AI-powered irrigation recommendation app that uses physics-informed neural networks (PINNs) and stochastic differential equations to generate field-specific water usage recommendations. It integrates with NASA SMAP satellite soil moisture data and is designed to work across diverse agricultural contexts in 10+ languages.</p>
+      <p style="margin-top:0.9rem;">The underlying framework — developed through research at the University of Louisville — uses model predictive control to optimize water delivery. Simulations show a projected 22.3% reduction in water usage compared to standard irrigation schedules.</p>
+      <a href="https://www.youtube.com/watch?v=pPRUIzA1NOU" class="btn btn-primary" style="margin-top:2rem;display:inline-block;">Launch Video ↗</a>
+    </div>
+    <div class="card-img"
+        style="
+          background-image: url('images/Dashboard.png');
+          background-size: 100%;
+          background-position: center;
+          background-repeat: no-repeat;
+          min-height: 550px;
+        ">
+    </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section section-alt">
+  <div class="section-header reveal">
+    <div class="eyebrow">How It Works</div>
+    <h2>Three steps to smarter irrigation</h2>
+  </div>
+  <div class="steps">
+    <div class="step reveal">
+      <div class="step-num">1</div>
+      <h3>Input Your Field Data</h3>
+      <p>Enter your crop type, field size, and location. WaterWise pulls NASA SMAP satellite soil moisture data automatically for your region.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">2</div>
+      <h3>AI Analyzes Conditions</h3>
+      <p>Our physics-informed neural network processes soil moisture, weather patterns, and crop-specific parameters to model optimal water needs.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">3</div>
+      <h3>Receive Recommendations</h3>
+      <p>Get actionable irrigation recommendations in your language. No technical expertise required — WaterWise handles the science.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH & AWARDS -->
+<section class="section">
+  <div class="section-header reveal">
+    <div class="eyebrow">Research &amp; Recognition</div>
+    <h2>Award-winning science</h2>
+  </div>
+  <div class="card-grid">
+    <div class="card reveal">
+      <div class="card-body">
+        <div class="card-tag">ISEF 2026</div>
+        <h3>AMS Karl Menger Award</h3>
+        <p>3rd place special award from the American Mathematical Society, recognizing the spectral-stochastic mathematical framework underlying WaterWise.</p>
+      </div>
+    </div>
+    <div class="card reveal">
+      <div class="card-body">
+        <div class="card-tag">Academic</div>
+        <h3>arXiv Publication</h3>
+        <p>The physics-based neural network framework has been submitted to arXiv (ACM Classification I.2.6; J.3; I.5.1) and is in the journal submission pipeline.</p>
+      </div>
+    </div>
+    <div class="card reveal">
+      <div class="card-body">
+        <div class="card-tag">University Research</div>
+        <h3>UofL Partnership</h3>
+        <p>Developed in collaboration with University of Louisville faculty in machine learning and biomedical science, with ongoing research support from Dr. Barati.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONGRESSIONAL RECOGNITION -->
+<section class="section section-dark">
+  <div class="two-col reveal">
+    <div>
+      <div class="eyebrow" style="color:var(--green-teal);">Congressional Recognition</div>
+      <h2>Recognized by the U.S. Congress</h2>
+      <p style="margin-top:1.25rem;">WaterWise was selected as the winner of the Congressional App Challenge for Kentucky's 2nd Congressional District. The app received formal recognition from Representative Brett Guthrie (KY-02), who highlighted its potential impact on water conservation and agricultural efficiency.</p>
+      <p style="margin-top:0.9rem;">The Congressional App Challenge is a nationwide competition that recognizes outstanding student-built applications. WaterWise was chosen from entries across the district for its technical innovation and real-world applicability.</p>
+      <div style="margin-top:2rem;padding:1.25rem 1.5rem;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius);">
+        <div style="font-size:0.75rem;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.4rem;">Recognition</div>
+        <div style="color:var(--white);font-weight:600;">Congressional App Challenge Winner</div>
+        <div style="color:rgba(255,255,255,0.55);font-size:0.875rem;margin-top:0.2rem;">Rep. Brett Guthrie · Kentucky's 2nd Congressional District</div>
+      </div>
+    </div>
+    <div>
+      <img src="images/guthrie.JPG"
+          alt="Congressional recognition"
+          style="width:100%; min-height:400px; object-fit:cover; border-radius:16px; border:1px solid rgba(255,255,255,0.1);">
+    </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand"><div class="logo">Terra2Vita</div><p>A student-led nonprofit at the intersection of water technology and climate education.</p><div class="footer-tagline">Research that moves. Education that lasts.</div></div>
+    <div class="footer-col"><h4>Programs</h4><ul><li><a href="waterwise.html">WaterWise</a></li><li><a href="littlebuilders.html">Little Builders</a></li><li><a href="rise2research.html">Rise2Research</a></li></ul></div>
+    <div class="footer-col"><h4>Organization</h4><ul><li><a href="about.html">About</a></li><li><a href="blog.html">Blog</a></li><li><a href="getinvolved.html">Get Involved</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><span>© 2025 Terra2Vita. All rights reserved.</span><div class="social-links"><a href="https://instagram.com/terra2vita" target="_blank">IG</a><a href="mailto:terra2vita.org@gmail.com">✉</a></div></div>
+</footer>
+<script src="js/main.js"></script>
+</body></html>
