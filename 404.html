@@ -3,9 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Home</title>
+  <title>Page Not Found</title>
   <meta name="theme-color" content="#1a3a2a" />
   <link rel="icon" type="image/png" href="/images/water-logo-back.png" />
+  <script>
+    (function () {
+      var path = location.pathname;
+      var map = {
+        "/blog-water-scarcity.html": "/blog/water-scarcity",
+        "/blog-soil-moisture.html": "/blog/soil-moisture",
+        "/blog-teaching-climate.html": "/blog/teaching-climate",
+        "/blog-ai-irrigation.html": "/blog/ai-irrigation"
+      };
+      if (map[path]) { location.replace(map[path]); return; }
+      if (/\.html$/.test(path) && path !== "/index.html" && path !== "/404.html") {
+        location.replace(path.replace(/\.html$/, ""));
+      }
+    })();
+  </script>
   <link rel="apple-touch-icon" href="/images/water-logo-back.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,7 +29,7 @@
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
-<nav class="navbar" aria-label="Primary">
+<nav class="navbar solid" aria-label="Primary">
   <a href="/" class="nav-logo">
     <img src="/images/water-logo-back.png" alt="Terra2Vita" class="nav-logo-img">
     <span>Terra2Vita</span>
@@ -49,80 +64,14 @@
 </div>
 <main id="main">
 
-<section class="hero">
-  <div class="hero-bg" style="background-image:url('/images/Sunset.jpg');background-size:cover;background-position:center;background-repeat:no-repeat;"></div>
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <h1>Research that moves.<br>Education that lasts.</h1>
-    <p>Terra2Vita builds water conservation technology and climate education programs that reach communities across the globe.</p>
-    <div class="hero-btns">
-      <a href="/programs" class="btn btn-primary">Our Programs</a>
-      <a href="/getinvolved" class="btn btn-ghost">Get Involved</a>
-    </div>
+<div class="not-found">
+  <div>
+    <span class="eyebrow">404</span>
+    <h1>Page not found</h1>
+    <p>The page you're looking for may have moved. Let's get you back to the work.</p>
+    <a href="/" class="btn btn-primary">Back to Home</a>
   </div>
-  <div class="hero-scroll"><div class="scroll-line"></div></div>
-</section>
-
-<section class="section">
-  <div class="two-col reveal">
-    <div>
-      <div class="eyebrow">Our Mission</div>
-      <h2>Where water technology meets climate education</h2>
-      <p class="lede">Terra2Vita is a student-led nonprofit developing AI-powered water conservation tools and hands-on climate education programs. We believe research and education are the twin engines of lasting environmental change.</p>
-      <p>From AI-driven irrigation tools to elementary school workshops, our programs are built on peer-reviewed science and validated in real communities.</p>
-      <a href="/about" class="btn btn-outline" style="margin-top:2rem;display:inline-block;">Our Story</a>
-    </div>
-    <div>
-      <img src="/images/Farm.JPG" alt="Farm irrigation" class="content-img">
-    </div>
-  </div>
-</section>
-
-<section class="section section-alt">
-  <div class="section-header reveal">
-    <div class="eyebrow">What We Do</div>
-    <h2>Three programs, one mission</h2>
-    <p>Each program addresses a different dimension of the water and climate challenge.</p>
-  </div>
-  <div class="card-grid">
-    <div class="card reveal">
-      <div class="card-img" style="background:linear-gradient(rgba(26,58,42,0.35), rgba(42,122,106,0.35)), url('/images/Waterwisepic.png');background-size:cover;background-position:center;"></div>
-      <div class="card-body">
-        <div class="card-tag">Technology</div>
-        <h3>WaterWise</h3>
-        <p>An AI-powered irrigation app using physics-informed neural networks. Tested with simulated models across diverse agricultural contexts in 10+ languages.</p>
-        <a href="/waterwise" class="card-link">Learn more →</a>
-      </div>
-    </div>
-    <div class="card reveal">
-      <div class="card-img" style="background:linear-gradient(rgba(26,58,42,0.35), rgba(42,122,106,0.35)), url('/images/Build.jpg');background-size:cover;background-position:center;"></div>
-      <div class="card-body">
-        <div class="card-tag">Education</div>
-        <h3>Little Builders</h3>
-        <p>Free, hands-on climate education workshops for elementary students. 3 workshops, 105+ students reached, 100% satisfaction. Summer sessions July 12 &amp; 19.</p>
-        <a href="/littlebuilders" class="card-link">Learn more →</a>
-      </div>
-    </div>
-    <div class="card reveal">
-      <div class="card-img" style="background:linear-gradient(rgba(26,58,42,0.35), rgba(42,122,106,0.35)), url('/images/Research.jpg');background-size:cover;background-position:center;"></div>
-      <div class="card-body">
-        <div class="card-tag">Coming Soon</div>
-        <h3>Rise2Research</h3>
-        <p>A student research showcase platform connecting young scientists with mentors and audiences to share their work with the world.</p>
-        <a href="/rise2research" class="card-link">Learn more →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section section-dark section-center">
-  <div class="reveal">
-    <div class="eyebrow">Join Us</div>
-    <h2 style="margin-top:0.5rem;">Ready to get involved?</h2>
-    <p class="narrow">Become a Founding Ambassador, volunteer at a Little Builders workshop, or partner with Terra2Vita.</p>
-    <a href="/getinvolved" class="btn btn-primary">Get Involved</a>
-  </div>
-</section>
+</div>
 
 </main>
 <footer>

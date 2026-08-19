@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Home</title>
+  <title>Contact</title>
   <meta name="theme-color" content="#1a3a2a" />
   <link rel="icon" type="image/png" href="/images/water-logo-back.png" />
   <link rel="apple-touch-icon" href="/images/water-logo-back.png" />
@@ -14,7 +14,7 @@
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
-<nav class="navbar" aria-label="Primary">
+<nav class="navbar solid" aria-label="Primary">
   <a href="/" class="nav-logo">
     <img src="/images/water-logo-back.png" alt="Terra2Vita" class="nav-logo-img">
     <span>Terra2Vita</span>
@@ -49,78 +49,75 @@
 </div>
 <main id="main">
 
-<section class="hero">
-  <div class="hero-bg" style="background-image:url('/images/Sunset.jpg');background-size:cover;background-position:center;background-repeat:no-repeat;"></div>
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <h1>Research that moves.<br>Education that lasts.</h1>
-    <p>Terra2Vita builds water conservation technology and climate education programs that reach communities across the globe.</p>
-    <div class="hero-btns">
-      <a href="/programs" class="btn btn-primary">Our Programs</a>
-      <a href="/getinvolved" class="btn btn-ghost">Get Involved</a>
-    </div>
-  </div>
-  <div class="hero-scroll"><div class="scroll-line"></div></div>
-</section>
+<div class="page-hero">
+  <span class="eyebrow">Say Hello</span>
+  <h1>Contact Us</h1>
+  <p>Questions, partnerships, workshop registration, or just want to learn more — we'd love to hear from you.</p>
+</div>
 
 <section class="section">
   <div class="two-col reveal">
     <div>
-      <div class="eyebrow">Our Mission</div>
-      <h2>Where water technology meets climate education</h2>
-      <p class="lede">Terra2Vita is a student-led nonprofit developing AI-powered water conservation tools and hands-on climate education programs. We believe research and education are the twin engines of lasting environmental change.</p>
-      <p>From AI-driven irrigation tools to elementary school workshops, our programs are built on peer-reviewed science and validated in real communities.</p>
-      <a href="/about" class="btn btn-outline" style="margin-top:2rem;display:inline-block;">Our Story</a>
+      <h2>Get in touch</h2>
+      <p class="lede">Whether you're a student, educator, potential partner, or just someone curious about our work — reach out. We read every message and respond within a few days.</p>
+      <div class="contact-list">
+        <div class="contact-item">
+          <div class="contact-icon">✉</div>
+          <div>
+            <strong>Email</strong>
+            <a href="mailto:terra2vita.org@gmail.com">terra2vita.org@gmail.com</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <strong>Based In</strong>
+            <span>Louisville, Kentucky</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📸</div>
+          <div>
+            <strong>Instagram</strong>
+            <a href="https://instagram.com/terra2vita" target="_blank" rel="noopener">@terra2vita</a>
+          </div>
+        </div>
+      </div>
+      <div class="callout">
+        <h4>Little Builders Registration</h4>
+        <p>To register for a summer workshop session (July 12 or July 19), please use the contact form and mention which date you prefer. Spots are limited!</p>
+      </div>
     </div>
     <div>
-      <img src="/images/Farm.JPG" alt="Farm irrigation" class="content-img">
+      <form class="contact-form form-card" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <h3>Send a message</h3>
+        <div class="form-group">
+          <label for="c-name">Your Name</label>
+          <input id="c-name" type="text" placeholder="First and last name" required />
+        </div>
+        <div class="form-group">
+          <label for="c-email">Email Address</label>
+          <input id="c-email" type="email" placeholder="you@email.com" required />
+        </div>
+        <div class="form-group">
+          <label for="c-subject">Subject</label>
+          <select id="c-subject">
+            <option value="">What's this about?</option>
+            <option>Little Builders Registration</option>
+            <option>Founding Ambassador Program</option>
+            <option>Partnership Inquiry</option>
+            <option>WaterWise / Research</option>
+            <option>Volunteer</option>
+            <option>General Question</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="c-message">Message</label>
+          <textarea id="c-message" placeholder="Tell us what's on your mind..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;">Send Message</button>
+      </form>
     </div>
-  </div>
-</section>
-
-<section class="section section-alt">
-  <div class="section-header reveal">
-    <div class="eyebrow">What We Do</div>
-    <h2>Three programs, one mission</h2>
-    <p>Each program addresses a different dimension of the water and climate challenge.</p>
-  </div>
-  <div class="card-grid">
-    <div class="card reveal">
-      <div class="card-img" style="background:linear-gradient(rgba(26,58,42,0.35), rgba(42,122,106,0.35)), url('/images/Waterwisepic.png');background-size:cover;background-position:center;"></div>
-      <div class="card-body">
-        <div class="card-tag">Technology</div>
-        <h3>WaterWise</h3>
-        <p>An AI-powered irrigation app using physics-informed neural networks. Tested with simulated models across diverse agricultural contexts in 10+ languages.</p>
-        <a href="/waterwise" class="card-link">Learn more →</a>
-      </div>
-    </div>
-    <div class="card reveal">
-      <div class="card-img" style="background:linear-gradient(rgba(26,58,42,0.35), rgba(42,122,106,0.35)), url('/images/Build.jpg');background-size:cover;background-position:center;"></div>
-      <div class="card-body">
-        <div class="card-tag">Education</div>
-        <h3>Little Builders</h3>
-        <p>Free, hands-on climate education workshops for elementary students. 3 workshops, 105+ students reached, 100% satisfaction. Summer sessions July 12 &amp; 19.</p>
-        <a href="/littlebuilders" class="card-link">Learn more →</a>
-      </div>
-    </div>
-    <div class="card reveal">
-      <div class="card-img" style="background:linear-gradient(rgba(26,58,42,0.35), rgba(42,122,106,0.35)), url('/images/Research.jpg');background-size:cover;background-position:center;"></div>
-      <div class="card-body">
-        <div class="card-tag">Coming Soon</div>
-        <h3>Rise2Research</h3>
-        <p>A student research showcase platform connecting young scientists with mentors and audiences to share their work with the world.</p>
-        <a href="/rise2research" class="card-link">Learn more →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section section-dark section-center">
-  <div class="reveal">
-    <div class="eyebrow">Join Us</div>
-    <h2 style="margin-top:0.5rem;">Ready to get involved?</h2>
-    <p class="narrow">Become a Founding Ambassador, volunteer at a Little Builders workshop, or partner with Terra2Vita.</p>
-    <a href="/getinvolved" class="btn btn-primary">Get Involved</a>
   </div>
 </section>
 
