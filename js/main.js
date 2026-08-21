@@ -1,145 +1,202 @@
 /* ============================================
    TERRA2VITA — Main JavaScript
-   Handles: navbar, scroll reveal, parallax,
-   mobile menu, page transitions, counters
 ============================================ */
 
-// ---- NAVBAR SCROLL BEHAVIOR ----
+document.documentElement.classList.add('has-js');
+
+if (location.pathname === '/index.html') {
+  history.replaceState(null, '', '/');
+}
+
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---- NAVBAR ---- */
 const navbar = document.querySelector('.navbar');
 if (navbar) {
   const isHeroPage = document.querySelector('.hero');
   if (!isHeroPage) navbar.classList.add('solid');
 
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 60) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
-    }
-  });
+  const onScroll = () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
 }
 
-// ---- MOBILE MENU ----
+function normalizePath(path) {
+  if (!path) return '/';
+  let cleaned = path.replace(/\/index\.html$/, '/').replace(/\.html$/, '');
+  if (cleaned.length > 1 && cleaned.endsWith('/')) cleaned = cleaned.slice(0, -1);
+  return cleaned || '/';
+}
+
+const currentPath = normalizePath(window.location.pathname);
+document.querySelectorAll('.nav-links a, .mobile-menu a').forEach((link) => {
+  const href = link.getAttribute('href');
+  if (!href || href.startsWith('http') || href.startsWith('mailto') || href.startsWith('#')) return;
+  const linkPath = normalizePath(href);
+  const isHome = linkPath === '/' && currentPath === '/';
+  const isExact = linkPath === currentPath && linkPath !== '/';
+  const isBlogChild = linkPath === '/blog' && currentPath.startsWith('/blog/');
+  const isProgramChild = linkPath === '/programs' && ['/waterwise', '/littlebuilders', '/rise2research'].includes(currentPath);
+  if (isHome || isExact || isBlogChild || isProgramChild) {
+    link.classList.add('active');
+    if (isHome || isExact) link.setAttribute('aria-current', 'page');
+  }
+});
+
+/* ---- PROGRAMS DROPDOWN ----
+   Stays open while the pointer travels toward the menu, and closes
+   shortly after the pointer leaves either the trigger or the menu. */
+const CLOSE_DELAY = 700;
+document.querySelectorAll('.nav-dropdown').forEach((dropdown) => {
+  const trigger = dropdown.querySelector('a');
+  let closeTimer = null;
+
+  const open = () => {
+    clearTimeout(closeTimer);
+    dropdown.classList.add('is-open');
+    if (trigger) trigger.setAttribute('aria-expanded', 'true');
+  };
+
+  const close = () => {
+    dropdown.classList.remove('is-open');
+    if (trigger) trigger.setAttribute('aria-expanded', 'false');
+  };
+
+  const scheduleClose = () => {
+    clearTimeout(closeTimer);
+    closeTimer = setTimeout(close, CLOSE_DELAY);
+  };
+
+  if (trigger) {
+    trigger.setAttribute('aria-haspopup', 'true');
+    trigger.setAttribute('aria-expanded', 'false');
+  }
+
+  dropdown.addEventListener('mouseenter', open);
+  dropdown.addEventListener('mouseleave', scheduleClose);
+  dropdown.addEventListener('focusin', open);
+  dropdown.addEventListener('focusout', (e) => {
+    if (!dropdown.contains(e.relatedTarget)) close();
+  });
+
+  dropdown.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      close();
+      if (trigger) trigger.focus();
+    }
+  });
+});
+
+/* ---- MOBILE MENU ---- */
 const hamburger = document.querySelector('.hamburger');
 const mobileMenu = document.querySelector('.mobile-menu');
 if (hamburger && mobileMenu) {
-  hamburger.addEventListener('click', () => {
-    mobileMenu.classList.toggle('open');
+  const setOpen = (open) => {
+    mobileMenu.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
     const spans = hamburger.querySelectorAll('span');
-    spans[0].style.transform = mobileMenu.classList.contains('open') ? 'rotate(45deg) translate(5px, 5px)' : '';
-    spans[1].style.opacity = mobileMenu.classList.contains('open') ? '0' : '1';
-    spans[2].style.transform = mobileMenu.classList.contains('open') ? 'rotate(-45deg) translate(5px, -5px)' : '';
+    spans[0].style.transform = open ? 'rotate(45deg) translate(5px, 5px)' : '';
+    spans[1].style.opacity = open ? '0' : '1';
+    spans[2].style.transform = open ? 'rotate(-45deg) translate(5px, -5px)' : '';
+  };
+
+  hamburger.addEventListener('click', () => {
+    setOpen(!mobileMenu.classList.contains('open'));
+  });
+
+  mobileMenu.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => setOpen(false));
   });
 }
 
-// ---- SCROLL REVEAL ----
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry, i) => {
-    if (entry.isIntersecting) {
-      setTimeout(() => {
-        entry.target.classList.add('visible');
-      }, entry.target.dataset.delay || 0);
+/* ---- SCROLL REVEAL ---- */
+const revealTargets = document.querySelectorAll('.reveal');
+if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+  revealTargets.forEach((el) => el.classList.add('visible'));
+} else {
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      const delay = Number(entry.target.dataset.delay) || 0;
+      setTimeout(() => entry.target.classList.add('visible'), delay);
       revealObserver.unobserve(entry.target);
-    }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.card-grid, .steps, .values-grid, .blog-grid, .sdg-row, .related-grid').forEach((group) => {
+    group.querySelectorAll('.card, .step, .value-card, .blog-card, .sdg-card, .related-card').forEach((child, i) => {
+      child.classList.add('reveal');
+      child.dataset.delay = String(Math.min(i, 6) * 70);
+    });
   });
-}, { threshold: 0.12 });
 
-document.querySelectorAll('.reveal').forEach((el, i) => {
-  revealObserver.observe(el);
-});
-
-// Stagger children in grids
-document.querySelectorAll('.card-grid, .steps, .values-grid, .blog-grid').forEach(grid => {
-  grid.querySelectorAll('.card, .step, .value-card, .blog-card').forEach((child, i) => {
-    child.classList.add('reveal');
-    child.dataset.delay = i * 100;
-    revealObserver.observe(child);
-  });
-});
-
-// ---- PARALLAX HERO ----
-const heroBg = document.querySelector('.hero-bg');
-if (heroBg) {
-  window.addEventListener('scroll', () => {
-    const scrolled = window.scrollY;
-    heroBg.style.transform = `translateY(${scrolled * 0.35}px)`;
-  }, { passive: true });
+  document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
 }
 
-// ---- ANIMATED COUNTERS ----
-function animateCounter(el) {
-  const target = el.dataset.target;
-  const isDecimal = target.includes('.');
-  const isPercent = target.includes('%');
-  const isPlus = target.includes('+');
-  const isM = target.includes('M');
-  const raw = parseFloat(target);
-  const duration = 1800;
-  const start = performance.now();
+/* ---- SCROLL PROGRESS ---- */
+if (!prefersReducedMotion) {
+  const progress = document.createElement('div');
+  progress.className = 'scroll-progress';
+  document.body.appendChild(progress);
 
-  function update(now) {
-    const elapsed = now - start;
-    const progress = Math.min(elapsed / duration, 1);
-    const eased = 1 - Math.pow(1 - progress, 3);
-    const current = raw * eased;
-
-    let display = isDecimal ? current.toFixed(1) : Math.floor(current).toString();
-    if (isM) display += 'M+';
-    else if (isPlus) display += '+';
-    else if (isPercent) display += '%';
-
-    el.textContent = display;
-    if (progress < 1) requestAnimationFrame(update);
-  }
-  requestAnimationFrame(update);
+  const updateProgress = () => {
+    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+    const ratio = scrollable > 0 ? window.scrollY / scrollable : 0;
+    progress.style.transform = `scaleX(${Math.min(ratio, 1)})`;
+  };
+  updateProgress();
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  window.addEventListener('resize', updateProgress);
 }
 
-const counterObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      animateCounter(entry.target);
-      counterObserver.unobserve(entry.target);
-    }
+/* ---- BLOG FILTERS ---- */
+const chips = document.querySelectorAll('.filter-chip');
+if (chips.length) {
+  const cards = Array.from(document.querySelectorAll('.blog-card'));
+  const counter = document.querySelector('[data-post-count]');
+  const empty = document.querySelector('.blog-empty');
+
+  chips.forEach((chip) => {
+    chip.addEventListener('click', () => {
+      const filter = chip.dataset.filter;
+      chips.forEach((c) => c.classList.toggle('is-active', c === chip));
+
+      let shown = 0;
+      cards.forEach((card) => {
+        const match = filter === 'all' || card.dataset.category === filter;
+        card.hidden = !match;
+        if (match) {
+          shown += 1;
+          card.classList.add('visible');
+        }
+      });
+
+      if (counter) counter.textContent = String(shown);
+      if (empty) empty.hidden = shown !== 0;
+    });
   });
-}, { threshold: 0.5 });
+}
 
-document.querySelectorAll('.count-up').forEach(el => counterObserver.observe(el));
-
-// ---- EMAIL SIGNUP (Rise2Research / Get Involved) ----
-document.querySelectorAll('.email-form').forEach(form => {
+/* ---- FORMS ---- */
+document.querySelectorAll('.email-form').forEach((form) => {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const input = form.querySelector('input[type="email"]');
     const btn = form.querySelector('button');
-    btn.textContent = 'Thanks! We\'ll be in touch.';
-    btn.style.background = '#1a3a2a';
+    btn.textContent = "Thanks! We'll be in touch.";
     btn.disabled = true;
-    input.value = '';
+    if (input) input.value = '';
   });
 });
 
-// ---- CONTACT FORM ----
 const contactForm = document.querySelector('.contact-form');
 if (contactForm) {
   contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const btn = contactForm.querySelector('button[type="submit"]');
     btn.textContent = 'Message sent!';
-    btn.style.background = '#1a3a2a';
     btn.disabled = true;
   });
 }
-
-/* ============================================
-   FORM SETUP INSTRUCTIONS
-   
-   To make contact forms actually send emails to terra2vita.org@gmail.com:
-   
-   1. Go to https://formspree.io and create a free account
-   2. Create a new form, set the email to terra2vita.org@gmail.com
-   3. Copy your Form ID (looks like: xrgvkpzb)
-   4. In contact.html and getinvolved.html, find:
-         action="https://formspree.io/f/YOUR_FORM_ID"
-      and replace YOUR_FORM_ID with your actual ID
-   5. That's it — Formspree handles the rest for free (up to 50 submissions/month)
-============================================ */

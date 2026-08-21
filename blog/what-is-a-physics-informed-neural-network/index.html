@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What Is a Physics-Informed Neural Network, Explained Without the Math</title>
+  <meta name="description" content="A plain-language walkthrough of the model family behind WaterWise, and why teaching a network the laws of physics beats showing it more data." />
+  <meta name="theme-color" content="#10261c" />
+  <script>document.documentElement.classList.add("has-js");if (location.pathname === "/index.html") history.replaceState(null, "", "/");</script>
+  <link rel="icon" type="image/png" href="/images/water-logo-back.png" />
+  <link rel="apple-touch-icon" href="/images/water-logo-back.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<nav class="navbar solid" aria-label="Primary">
+  <a href="/" class="nav-logo">
+    <img src="/images/water-logo-back.png" alt="Terra2Vita" class="nav-logo-img">
+    <span>Terra2Vita</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/about/">About</a></li>
+    <li class="nav-dropdown">
+      <a href="/programs/">Programs <span class="nav-caret" aria-hidden="true"></span></a>
+      <div class="dropdown-menu">
+        <a href="/waterwise/">WaterWise</a>
+        <a href="/littlebuilders/">Little Builders</a>
+        <a href="/rise2research/">Rise2Research</a>
+      </div>
+    </li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="/contact/">Contact</a></li>
+    <li><a href="/getinvolved/" class="nav-cta">Get Involved</a></li>
+  </ul>
+  <button class="hamburger" type="button" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu">
+  <a href="/">Home</a>
+  <a href="/about/">About</a>
+  <a href="/programs/">Programs</a>
+  <a href="/waterwise/" class="sub">WaterWise</a>
+  <a href="/littlebuilders/" class="sub">Little Builders</a>
+  <a href="/rise2research/" class="sub">Rise2Research</a>
+  <a href="/blog/">Blog</a>
+  <a href="/contact/">Contact</a>
+  <a href="/getinvolved/" class="nav-cta-mobile">Get Involved</a>
+</div>
+<main id="main">
+
+<div class="page-hero page-hero-article">
+  <div class="eyebrow">Technology</div>
+  <h1>What Is a Physics-Informed Neural Network, Explained Without the Math</h1>
+  <p>April 2026</p>
+</div>
+<div class="post-cover cover-grad cover-grad-7" aria-hidden="true"></div>
+<article class="post-body">
+  <a href="/blog/" class="post-back">&larr; Back to Blog</a>
+<p>Every machine learning model is a guess about how the world works. You show it examples, it finds patterns, and it uses those patterns to predict what happens next. That approach is powerful, but it has a well-known weakness: a model only knows what its training data showed it.</p>
+<p>A physics-informed neural network takes a different route. Instead of learning everything from examples, it starts with rules we already trust. Water moves through soil in ways that physicists described long before anyone trained a neural network, and those descriptions are written as equations.</p>
+<h3>Teaching the rules instead of the answers</h3>
+<p>During training, a normal network is penalized for getting predictions wrong. A physics-informed network is penalized twice: once for missing the observed data, and again for producing an answer that violates the physics. If it predicts water appearing where none could have flowed, the training process pushes back.</p>
+<p>That second penalty acts like a guardrail. It shrinks the space of possible answers to the ones that are physically plausible, which means the model needs far fewer examples to become useful.</p>
+<h3>Why it matters for irrigation</h3>
+<p>Farms are the definition of a data-poor environment. Most fields have no sensors, no historical logs, and no local model tuned to their soil. A purely data-driven system struggles there. A physics-informed system can still reason about how quickly moisture drains from sandy soil versus clay, because that behavior is encoded in the equations rather than learned from scratch.</p>
+<p>None of this makes the model infallible. Bad inputs still produce bad recommendations, and physics does not capture everything that happens in a real field. But starting from known science gives the system a floor to stand on, and that floor is what makes deployment outside a lab realistic.</p>
+</article>
+<div class="post-more">
+  <div class="post-more-inner">
+    <p class="eyebrow">Keep reading</p>
+    <div class="related-grid">
+      <a class="related-card" href="/blog/soil-moisture/">
+        <span class="related-meta">May 2025 &middot; Earth</span>
+        <span class="related-title">Soil Moisture and the Invisible Crisis Beneath Our Feet</span>
+      </a>
+      <a class="related-card" href="/blog/teaching-climate/">
+        <span class="related-meta">April 2025 &middot; Climate Education</span>
+        <span class="related-title">Teaching Climate Change to Eight-Year-Olds: What Actually Works</span>
+      </a>
+      <a class="related-card" href="/blog/ai-irrigation/">
+        <span class="related-meta">March 2025 &middot; Technology</span>
+        <span class="related-title">What Agriculture Gets Wrong About Water, and How AI Can Help</span>
+      </a>
+    </div>
+    <a href="/blog/" class="btn btn-outline">View All Articles</a>
+  </div>
+</div>
+</main>
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo">
+        <img src="/images/water-logo-back.png" alt="" class="footer-logo-img">
+        Terra2Vita
+      </div>
+      <p>A student-led nonprofit at the intersection of water technology and climate education. Louisville, KY.</p>
+      <div class="footer-tagline">Research that moves. Education that lasts.</div>
+    </div>
+    <div class="footer-col">
+      <h4>Programs</h4>
+      <ul>
+        <li><a href="/waterwise/">WaterWise</a></li>
+        <li><a href="/littlebuilders/">Little Builders</a></li>
+        <li><a href="/rise2research/">Rise2Research</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Organization</h4>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/getinvolved/">Get Involved</a></li>
+        <li><a href="/contact/">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Terra2Vita. All rights reserved.</span>
+    <div class="social-links">
+      <a href="https://instagram.com/terra2vita" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.9c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.9.1s-3.6 0-4.9-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.3 2.2 12s0-3.6.1-4.9C2.4 3.9 4 2.3 7.2 2.2 8.5 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.1-2.2.1-3.2 1.1-3.3 3.3-.1 1.2-.1 1.6-.1 4.6s0 3.5.1 4.7c.1 2.2 1.1 3.2 3.3 3.3 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c2.2-.1 3.2-1.1 3.3-3.3.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.6c-.1-2.2-1.1-3.2-3.3-3.3-1.2-.1-1.6-.1-4.7-.1zm0 3.1a5 5 0 1 1 0 9.9 5 5 0 0 1 0-9.9zm0 1.8a3.2 3.2 0 1 0 0 6.3 3.2 3.2 0 0 0 0-6.3zm6.4-2.6a1.2 1.2 0 1 1-2.3 0 1.2 1.2 0 0 1 2.3 0z"/></svg>
+      </a>
+      <a href="mailto:terra2vita.org@gmail.com" aria-label="Email">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+<script src="/js/main.js"></script>
+</body>
+</html>
